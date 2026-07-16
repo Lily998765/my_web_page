@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html>
+ <head>
+  <meta charset="UTF-8">
+  <title>网页作业1</title>
+  <style>
+	.d1{
+		width:90px;
+		height:125px;
+		border:1px solid red;
+		background:url("people.jpg");
+		/* 禁止图片重复平铺 */
+		background_repeat:no-repeat;
+		/* 默认显示第1行第1个小孩 */
+		background-position: 0 0;
+		cursor: pointer;
+	}
+
+  </style>
+ </head>
+ <body>
+  <div class="d1" id="d1"></div>
+  
+ </body>
+	
+  <script>
+    // 获取盒子元素
+    const box = document.getElementById('d1');
+    // 单个小人宽高（原图4行6列总宽542，总高500）
+    const singleW = 542 / 6;
+    const singleH = 500 / 4;
+    // 当前人物索引 0~23
+    let index = 0;
+
+    // 鼠标悬浮触发切换下一个人物
+    box.onmouseover = function(){
+        // 循环：24个切换完回到第一个
+        index = (index + 1) % 24;
+        // 计算行列
+        let col = index % 6;    // 列
+        let row = Math.floor(index / 6); // 行
+        // 计算背景偏移（负值向左、向上移动精灵图）
+        let x = -col * singleW;
+        let y = -row * singleH;
+        // 赋值修改背景位置
+        box.style.backgroundPosition = `${x}px ${y}px`;
+    }
+	</script>
+</html>

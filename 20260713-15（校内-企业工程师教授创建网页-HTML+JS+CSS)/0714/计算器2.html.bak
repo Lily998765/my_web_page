@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html>
+ <head>
+  <meta charset="UTF-8">
+  <title>计算器</title>
+  <style>
+	.btn{
+		width:160px;
+		height:160px;
+		font-size:50px;
+		margin:5px;
+	}
+  </style>
+ </head>
+ <body>
+	<div style="width:700px;height:900px;border:1px solid black;margin:50px auto;">
+		<div style="width:100%;height:200px;border:1px solid black;text-align:center;">
+			<input id="numShow" readonly type="text" style="height:100px;font-size:55px;margin-top:40px;text-align:right;"/>
+		</div>
+		<div style="widht:100%;height:700px;border:1px solid black;">
+			<button class="btn" onclick="addnum('1')">1</button>
+			<button class="btn" onclick="addnum('2')">2</button>
+			<button class="btn" onclick="addnum('3')">3</button>
+			<button class="btn" onclick="addnum('4')">4</button>
+			<button class="btn" onclick="addnum('5')">5</button>
+			<button class="btn" onclick="addnum('6')">6</button>
+			<button class="btn" onclick="addnum('7')">7</button>
+			<button class="btn" onclick="addnum('8')">8</button>
+			<button class="btn" onclick="addnum('9')">9</button>
+			<button class="btn" onclick="addnum('0')">0</button>
+			<button class="btn" onclick="add()">+</button>
+			<button class="btn">-</button>
+			<button class="btn">x</button>
+			<button class="btn">/</button>
+			<button class="btn" onclick="eqls()">=</button>
+			<button class="btn" onclick="clr()">CE</button>
+			<button class="btn" onclick="del()">删除</button>
+		</div>
+	</div>
+
+
+	<script type="text/javascript">
+		var first_num;//第一个数字
+		var flag = 0;//1表示加法,2 减法,3乘法 4除法
+
+		//输入数字
+		function addnum(num){
+			console.log(num);
+			var numshowVal = document.getElementById("numShow").value;//获取当前输入框的值
+			document.getElementById("numShow").value = (numshowVal+num);//再与输入的值进行拼接,再设置到输入框中.
+		}
+
+		//清空
+		function clr(){
+			document.getElementById("numShow").value = "";
+		}
+		
+		//加号触发
+		function add(){
+			flag = 1;//1表示加法
+			first_num = document.getElementById("numShow").value;//获取当前的输入框的内容，保存在全局变量里面
+			document.getElementById("numShow").value = "";
+		}
+		
+		//等于触发
+		function eqls(){
+			switch(flag){
+				case 1://加法
+					first_num;
+					var inp_num = document.getElementById("numShow").value;
+					var addnum = parseFloat(first_num)+parseFloat(inp_num);//将全局变量里的值和当前输入框的直进行相加
+					document.getElementById("numShow").value = addnum;//addnum回显到输入框中去
+					break;
+			}
+		}
+
+		//退格键
+		function del(){
+			var vl = document.getElementById("numShow").value;//获取当前输入框的文本内容
+			//123 
+			var jieguo = vl.length > 0?vl.substring(0,vl.length-1):"";
+			document.getElementById("numShow").value = jieguo;//截取的结果返回到输入框中
+		}
+	</script>
+ </body>
+</html>

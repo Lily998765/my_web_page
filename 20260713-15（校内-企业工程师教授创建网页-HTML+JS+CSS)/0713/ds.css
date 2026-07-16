@@ -1,0 +1,33 @@
+/*id名称选择器*/
+	#d1{
+		width:200px;
+		height:200px;
+		border:1px solid red;
+	}
+	
+	/*标签名称选择器*/
+	p{
+		color:red;
+	}
+	
+	/*类名称选择器*/
+	.d2{
+		width:200px;
+		height:200px;
+		border:2px solid orange;
+	}
+	
+	/*鼠标移入组件产生的变化属性 伪类*/
+	.d2:hover{
+		background:red;
+	}
+	
+	/* */
+	.d3{
+		width:200px;
+		height:200px;
+		border:2px solid blue;
+		background:url("people.jpg");
+		color:#FFFFFF;
+		background-position:-900px 10px;
+	}

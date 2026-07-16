@@ -1,0 +1,455 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8" />
+  <title>雅境文创</title>
+  <style>
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body {
+      min-height: 100vh;
+      font-family: "PingFang SC", "Noto Sans SC", "Microsoft YaHei", sans-serif;
+      background: #f8f6f1;
+      color: #2f3130;
+      line-height: 1.6;
+    }
+    body::before {
+      content: "";
+      position: fixed;
+      inset: 0;
+      background:
+        radial-gradient(circle at 15% 20%, rgba(255, 206, 143, 0.16), transparent 14%),
+        radial-gradient(circle at 80% 5%, rgba(86, 152, 124, 0.12), transparent 16%);
+      pointer-events: none;
+    }
+    .page {
+      max-width: 1180px;
+      margin: 0 auto;
+      padding: 20px 24px 40px;
+    }
+    .header {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 16px;
+      padding: 16px 0;
+    }
+    .brand {
+      display: flex;
+      align-items: center;
+      gap: 14px;
+    }
+    .brand-mark {
+      width: 46px;
+      height: 46px;
+      border-radius: 16px;
+      background: linear-gradient(135deg, #ded0b5, #f1e4d2);
+      box-shadow: 0 10px 24px rgba(0,0,0,0.06);
+      display: grid;
+      place-items: center;
+      font-size: 1.2rem;
+      color: #65513a;
+      font-weight: bold;
+    }
+    .brand-text h1 {
+      font-size: 1.3rem;
+      letter-spacing: 0.14em;
+      color: #2f3130;
+    }
+    .brand-text p {
+      font-size: 0.9rem;
+      color: #7b7160;
+    }
+    .nav {
+      display: flex;
+      gap: 18px;
+      flex-wrap: wrap;
+    }
+    .nav a {
+      color: #5b5245;
+      text-decoration: none;
+      font-size: 0.95rem;
+      padding: 6px 10px;
+      border-radius: 12px;
+      transition: background 0.2s, color 0.2s;
+    }
+    .nav a:hover,
+    .nav a.active { background: rgba(97, 82, 54, 0.1); color: #3f3526; }
+    .hero {
+      display: grid;
+      grid-template-columns: minmax(280px, 1.1fr) 0.9fr;
+      gap: 20px;
+      align-items: center;
+      margin-top: 24px;
+      padding: 28px;
+      background: rgba(255,255,255,0.85);
+      border-radius: 28px;
+      box-shadow: 0 24px 70px rgba(83, 68, 51, 0.06);
+      border: 1px solid rgba(118, 96, 61, 0.08);
+    }
+    .hero-info h2 {
+      font-size: clamp(2rem, 3.6vw, 3.6rem);
+      color: #362c1f;
+      line-height: 1.05;
+      margin-bottom: 18px;
+    }
+    .hero-info p {
+      max-width: 520px;
+      font-size: 1rem;
+      color: #5e5244;
+      margin-bottom: 24px;
+    }
+    .hero-buttons {
+      display: flex;
+      gap: 14px;
+      flex-wrap: wrap;
+    }
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      min-width: 130px;
+      padding: 12px 20px;
+      border-radius: 999px;
+      border: 1px solid rgba(97, 82, 54, 0.18);
+      background: #fff;
+      color: #473923;
+      font-weight: 600;
+      cursor: pointer;
+      transition: transform 0.2s, box-shadow 0.2s;
+    }
+    .btn.primary {
+      background: #c8b08b;
+      color: #2f2920;
+      box-shadow: 0 12px 24px rgba(104, 85, 59, 0.18);
+    }
+    .btn:hover { transform: translateY(-2px); }
+    .hero-detail {
+      margin-top: 22px;
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 12px;
+    }
+    .hero-card {
+      padding: 16px 18px;
+      border-radius: 20px;
+      border: 1px solid rgba(95, 79, 54, 0.12);
+      background: rgba(255,255,255,0.78);
+      box-shadow: 0 12px 26px rgba(92, 75, 56, 0.05);
+    }
+    .hero-card strong {
+      display: block;
+      font-size: 1.1rem;
+      margin-bottom: 8px;
+      color: #3f3323;
+    }
+    .hero-card span {
+      color: #7f7260;
+      font-size: 0.92rem;
+    }
+    .hero-art {
+      position: relative;
+      min-height: 420px;
+      border-radius: 40px;
+      overflow: hidden;
+      background: linear-gradient(180deg, #fbf7f0 100%, #ede3cd 100%);
+      border: 1px solid rgba(166, 139, 95, 0.12);
+    }
+    .hero-art::before {
+      content: "";
+      position: absolute;
+      inset: 0;
+      background-image: radial-gradient(circle at 20% 18%, rgba(255, 210, 146, 0.25), transparent 18%),
+                        radial-gradient(circle at 75% 100%, rgba(186, 167, 123, 0.16), transparent 14%);
+    }
+    .hero-art::after {
+      content: " ";
+      position: absolute;
+      inset: 18px;
+      background: rgba(246, 238, 223, 0.55);
+      border-radius: 50px;
+    }
+	.hero-art img{
+	   width:100%;
+	   height:100%;
+	   object-fit:cover;}
+    .section {
+      margin-top: 30px;
+    }
+    .section-title {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      margin-bottom: 18px;
+    }
+    .section-title h3 {
+      font-size: 1.2rem;
+      color: #3f3323;
+      letter-spacing: 0.06em;
+    }
+    .section-title button {
+      border: none;
+      background: transparent;
+      color: #7b6a55;
+      font-size: 0.92rem;
+      cursor: pointer;
+    }
+    .category-bar {
+      display: flex;
+      gap: 12px;
+      flex-wrap: wrap;
+      margin-bottom: 20px;
+    }
+    .category-pill {
+      padding: 10px 16px;
+      border-radius: 999px;
+      background: #f6f0e7;
+      color: #6c5740;
+      border: 1px solid rgba(118, 96, 61, 0.14);
+      cursor: pointer;
+      transition: background 0.2s, color 0.2s;
+    }
+    .category-pill.active {
+      background: #cbb790;
+      color: #3f3122;
+    }
+    .cards {
+      display: grid;
+      grid-template-columns: repeat(auto-fit,minmax(220px,1fr));
+      gap: 18px;
+    }
+    .card {
+      padding: 18px;
+      border-radius: 22px;
+      background: rgba(255,255,255,0.92);
+      border: 1px solid rgba(126, 103, 67, 0.12);
+      box-shadow: 0 16px 30px rgba(94, 72, 44, 0.07);
+      position: relative;
+      overflow: hidden;
+    }
+    .card::before {
+      content: "";
+      position: absolute;
+      top: -18px;
+      right: -18px;
+      width: 120px;
+      height: 120px;
+      border-radius: 50%;
+      background: rgba(197, 168, 112, 0.12);
+    }
+    .card h4 {
+      font-size: 1.05rem;
+      color: #3a3022;
+      margin-bottom: 10px;
+    }
+    .card p {
+      color: #716251;
+      font-size: 0.94rem;
+      margin-bottom: 12px;
+    }
+    .card small {
+      color: #9a8b74;
+      display: block;
+      margin-bottom: 14px;
+    }
+    .card button {
+      border: none;
+      padding: 10px 14px;
+      border-radius: 999px;
+      background: #e7d5b5;
+      color: #4b3e2d;
+      font-weight: 600;
+      cursor: pointer;
+      transition: transform 0.2s;
+    }
+    .card button:hover { transform: translateY(-1px); }
+    .footer {
+      margin-top: 34px;
+      padding-top: 20px;
+      border-top: 1px solid rgba(151, 130, 96, 0.14);
+      text-align: center;
+      color: #8d7f64;
+      font-size: 0.92rem;
+    }
+    @media (max-width: 900px) { .hero { grid-template-columns: 1fr; } }
+    @media (max-width: 620px) {
+      .header { flex-direction: column; align-items: flex-start; }
+      .nav { width: 100%; justify-content: flex-start; }
+    }
+  </style>
+</head>
+<body>
+  <div class="page">
+    <header class="header">
+      <div class="brand">
+        <div class="brand-mark">雅</div>
+        <div class="brand-text">
+          <h1>雅境文创</h1>
+          <p>清雅简净，文创之美</p>
+        </div>
+      </div>
+      <nav class="nav">
+        <a href="#collection" class="active">精选</a>
+        <a href="#story">故事</a>
+        <a href="#shop">好物</a>
+        <a href="#contact">联系</a>
+      </nav>
+    </header>
+
+    <section class="hero">
+      <div class="hero-info">
+        <h2>一纸一墨，一案一境</h2>
+        <p>精选东方意境与现代设计，让文创产品在简洁配色中拥有优雅质感。每一件作品都承载着匠心与雅致。</p>
+        <div class="hero-buttons">
+          <button class="btn primary" id="exploreBtn">探索新品</button>
+          <button class="btn" id="storyBtn">品牌故事</button>
+        </div>
+        <div class="hero-detail">
+          <div class="hero-card">
+            <strong>雅致手作</strong>
+            <span>从笔墨到瓷器，每一个细节都追求质感与美感的融合。</span>
+          </div>
+          <div class="hero-card">
+            <strong>插画意境</strong>
+            <span>柔和线条与淡雅色彩，营造恬静的东方审美空间。</span>
+          </div>
+        </div>
+      </div>
+      <div class="hero-art"><img src="https://ts1.tc.mm.bing.net/th/id/OIP-C.V4Pb1vSa31Y5-zK8rNwHpAHaLH?w=193&h=290&c=8&rs=1&qlt=90&o=6&dpr=1.3&pid=ImgAns&rm=2" ></div>
+    </section>
+
+    <section class="section" id="collection">
+      <div class="section-title">
+        <h3>匠选好物</h3>
+        <button id="viewAllBtn">查看全部</button>
+      </div>
+      <div class="category-bar" id="categoryBar"></div>
+      <div class="cards" id="productGrid"></div>
+    </section>
+
+    <section class="section" id="story">
+      <div class="section-title">
+        <h3>品牌故事</h3>
+        <button id="storyMoreBtn">了解更多</button>
+      </div>
+      <div class="cards">
+        <div class="card">
+          <img src="https://images.unsplash.com/photo-1513364776144-60967b0f800f?auto=format&fit=crop&w=1000&q=80" alt="雅致文创插图">
+          <h4>东方美学</h4>
+          <p>我们以简洁色调与雅致意境，呈现现代插画与文创的完美结合。</p>
+          <small>以“简而不凡”诠释国风</small>
+          <button>阅读故事</button>
+        </div>
+      </div>
+    </section>
+
+    <section class="footer" id="contact">
+      © 2026 雅境文创 · 清雅质感
+    </section>
+  </div>
+
+  <script>
+    const categories = [
+      { id: "all", name: "全部" },
+      { id: "stationery", name: "文房用品" },
+      { id: "tea", name: "茶器茶具" },
+      { id: "gift", name: "手作礼品" }
+    ];
+
+    const products = [
+      {
+        title: "青墨宣纸套装",
+        desc: "精致礼盒装，含笔、墨、纸、砚四件，适合书法创作与礼赠。",
+        price: "¥298 / 套",
+        category: "stationery"
+      },
+      {
+        title: "手工青花茶具",
+        desc: "清雅纹饰与温润釉色相融，适合茶席品茗与居家摆设。",
+        price: "¥168 / 套",
+        category: "tea"
+      },
+      {
+        title: "绢布雅袋",
+        desc: "素雅纹样与轻柔绢布，既可手提亦可收纳，简约而有风情。",
+        price: "¥128 / 件",
+        category: "gift"
+      },
+      {
+        title: "墨香笔记本",
+        desc: "仿古墨色封面，内含可拆式宣纸页，适合书写诗句。",
+        price: "¥98 / 本",
+        category: "stationery"
+      },
+      {
+        title: "手绘香盘",
+        desc: "素雅山水图案，适合居家香道与摆件装饰。",
+        price: "¥188 / 个",
+        category: "gift"
+      },
+      {
+        title: "云纹折扇",
+        desc: "轻薄折扇，扇面描绘云形花纹，清风雅韵。",
+        price: "¥138 / 把",
+        category: "gift"
+      }
+    ];
+
+    const categoryBar = document.getElementById("categoryBar");
+    const productGrid = document.getElementById("productGrid");
+    const exploreBtn = document.getElementById("exploreBtn");
+    const storyBtn = document.getElementById("storyBtn");
+    const storyMoreBtn = document.getElementById("storyMoreBtn");
+    const viewAllBtn = document.getElementById("viewAllBtn");
+
+    function renderCategories() {
+      categoryBar.innerHTML = categories.map(cat => `
+        <button class="category-pill${cat.id === "all" ? " active" : ""}" data-id="${cat.id}">
+          ${cat.name}
+        </button>
+      `).join("");
+      categoryBar.querySelectorAll(".category-pill").forEach(btn => {
+        btn.addEventListener("click", () => {
+          categoryBar.querySelectorAll(".category-pill").forEach(item => item.classList.remove("active"));
+          btn.classList.add("active");
+          renderProducts(btn.dataset.id);
+        });
+      });
+    }
+
+    function renderProducts(category = "all") {
+      const filtered = category === "all"
+        ? products
+        : products.filter(item => item.category === category);
+
+      productGrid.innerHTML = filtered.map(item => `
+        <div class="card">
+          <h4>${item.title}</h4>
+          <p>${item.desc}</p>
+          <small>${item.price}</small>
+          <button>立即购买</button>
+        </div>
+      `).join("");
+    }
+
+    exploreBtn.addEventListener("click", () => {
+      document.querySelector("#collection").scrollIntoView({ behavior: "smooth" });
+    });
+
+    storyBtn.addEventListener("click", () => {
+      document.querySelector("#story").scrollIntoView({ behavior: "smooth" });
+    });
+
+    storyMoreBtn.addEventListener("click", () => {
+      alert("品牌故事：雅境文堂以东方雅致为底色，将文创与当代审美融合，打造精致生活方式。");
+    });
+
+    viewAllBtn.addEventListener("click", () => {
+      const allButton = document.querySelector('.category-pill[data-id="all"]');
+      allButton.click();
+    });
+
+    renderCategories();
+    renderProducts();
+  </script>
+</body>
+</html>

@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html>
+ <head>
+  <meta charset="UTF-8">
+  <title>Document</title>
+ </head>
+ <body>
+	<input type="text" id="srk">
+	<button onclick="add()">确定</button>
+	<script type="text/javascript">
+		function add(){
+			//alert("你好");
+			var srk=document.getElementById("srk").value;
+			//document.getElementById("srk")获取到输入框组件，.value获取组件里的文本值
+			//alert(srk+"1");
+			if(isNaN(srk)){
+				alert("输入不合法");
+				return;
+			}
+			var num = parseInt(srk);//字符串转为整数的函数，不合法则返回NaN
+			alert(num+1);
+			console.log(num+1);
+		}
+	</script>
+ </body>
+</html>

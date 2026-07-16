@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html>
+ <head>
+  <meta charset="UTF-8">
+  <title>JS练习1</title>
+ </head>
+ <body>
+	<script type="text/javascript">
+	//javascript
+	alert("你好")//弹出提示框
+	
+	//按F12看控制台输出
+	var a="hello world";//声明字符串
+	console.log("a的内容为:"+a);
+	var b=100;
+	var c=12.1;
+	var e=b+c;
+	console.log("b+c的值："+e);
+	console.log("b+a的值："+(a+b));
+	
+	//判断
+	var a1=10;
+	var a2=20;
+	console.log(a1>a2);
+	console.log(a1<=a2);
+	
+	//if判断
+	var b1=10;
+	var b2=20;
+	if(b1>b2){
+		console.log("b1大于b2");
+	}else if(b2>b1){
+		console.log("b2大于b1");
+	}else{
+		console.log("我不知道");
+	}
+	//for循环
+	for(var i=0;i<20;i++){
+		console.log("i当前值为"+i);
+	}
+	
+	//while循环
+	var c1=0;
+	while(c1<15){
+		console.log("c1的值为"+c1);
+		document.write("c1的值为"+c1+"<br>");//<br>标签可不写后半截
+		c1++;
+	}
+	
+	var d1=0;
+	var d2=10;
+	//连续判断
+	console.log(d1<d2&&d1<100);
+	console.log(d1>d2||d1<100);
+	
+	document.write("你好");
+	document.write("<h1 style='color:red;'>标题标签</h1>");
+	
+	</script>
+ </body>
+</html>

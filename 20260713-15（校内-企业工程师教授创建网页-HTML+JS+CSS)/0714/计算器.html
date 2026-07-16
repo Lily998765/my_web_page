@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html>
+ <head>
+  <meta charset="UTF-8">
+  <title>计算器</title>
+  <style>
+	.btn{
+		width:160px;
+		height:160px;
+		font-size:50px;
+		margin:5px;
+	}
+  </style>
+ </head>
+ <body>
+	<div style="width:700px;height:900px;border:1px solid red;margin:50px auto;">
+		<div style="width:100%;height:200px;border:1px solid red;text-align:center;">
+			<input id="numShow" type="text" style="height:100px;font-size:55px;margin-top:40px;text-align:right;"/>
+		</div>
+		<div style="widht:100%;height:700px;border:1px solid blue;">
+			<button class="btn" onclick="addnum('1')">1</button>
+			<button class="btn" onclick="addnum('2')">2</button>
+			<button class="btn" onclick="addnum('3')">3</button>
+			<button class="btn" onclick="addnum('4')">4</button>
+			<button class="btn" onclick="addnum('5')">5</button>
+			<button class="btn" onclick="addnum('6')">6</button>
+			<button class="btn" onclick="addnum('7')">7</button>
+			<button class="btn" onclick="addnum('8')">8</button>
+			<button class="btn" onclick="addnum('9')">9</button>
+			<button class="btn" onclick="addnum('0')">0</button>
+			<button class="btn">+</button>
+			<button class="btn">-</button>
+			<button class="btn">x</button>
+			<button class="btn">/</button>
+			<button class="btn">=</button>
+			<button class="btn" onclick="clr()">CE</button>
+		</div>
+	</div>
+
+
+	<script type="text/javascript">
+		function addnum(num){
+			console.log(num);
+			var numshowVal = document.getElementById("numShow").value;//获取当前输入框的值
+			document.getElementById("numShow").value = (numshowVal+num);//再与输入的值进行拼接,再设置到输入框中.
+		}
+
+		function clr(){
+			document.getElementById("numShow").value = "";
+		}
+	</script>
+ </body>
+</html>
